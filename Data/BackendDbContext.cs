@@ -16,8 +16,5 @@ namespace Backend.Data
         public DbSet< User> Users { get; set; }
         public DbSet<Folder> Folders { get; set; }
         public DbSet<Document> Documents { get; set; }
-        public DbSet<Trash> Trashs { get; set; }
-
-
     }
 }
