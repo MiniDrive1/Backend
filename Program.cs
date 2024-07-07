@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using System.Text;
 using System.Text.Json.Serialization;
+using Backend.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
@@ -23,6 +24,9 @@ options.UseMySql(
     builder.Configuration.GetConnectionString("MySqlConnection"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")
 ));
+
+// Add services
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 var app = builder.Build();

@@ -13,9 +13,6 @@ namespace Backend.Models{
         public int UserId {get; set;}
         public User? User {get; set;}
 
-        /* ------------- */
-        public int? ParentFolderId{get; set;}
-
         /* -------------- */
         [Required(ErrorMessage = "The Name of the folder is required.")]
         [MinLength(1, ErrorMessage = "Name must be at least {1} characters.")]
@@ -29,6 +26,7 @@ namespace Backend.Models{
 
         /* -------------- */
         public int? FolderId {get;set;}
+        public Folder? Folder {get; set;}
         
         /* ------------------ */
         [Required(ErrorMessage = "status is required.")]

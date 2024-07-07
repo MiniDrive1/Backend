@@ -14,7 +14,10 @@ namespace Backend.Models{
         public User? User {get; set;}
 
         /* --------------- */
-        public int ParentFolderId{get; set;}
+        public int? ParentFolderId { get; set; }
+        public Folder? ParentFolder { get; set; } // Esto es importante para la navegación de EF Core
+        public ICollection<Folder>? SubFolders { get; set; } // Relación inversa
+
 
         /* ---------------- */
         [Required(ErrorMessage = "The Name of the folder is required.")]
@@ -30,6 +33,10 @@ namespace Backend.Models{
         /* ------------- */
         [Required(ErrorMessage = "status is required.")]
         public string Status {get; set;}
+
+                /* ---------------- */
+        [JsonIgnore]
+        public List<Document>? Document { get; set; }
 
     }
 }
