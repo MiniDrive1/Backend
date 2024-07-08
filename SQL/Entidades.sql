@@ -11,7 +11,6 @@ CREATE TABLE Folders(
     UserId INT,
     ParentFolderId INT,
     Name VARCHAR(255),
-    Data TEXT,
     CreationDate Date,
     Status ENUM("Active","Inactive")
 );
