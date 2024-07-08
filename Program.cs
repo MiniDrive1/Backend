@@ -3,6 +3,7 @@ using Backend.Data;
 using System.Text;
 using System.Text.Json.Serialization;
 using Backend.Services.Users;
+using Backend.Services.Folders;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
@@ -27,6 +28,8 @@ options.UseMySql(
 
 // Add services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IFolderRepository, FolderRepository>();
+
 
 
 var app = builder.Build();
