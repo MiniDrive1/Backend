@@ -11,11 +11,11 @@ public class MailController{
         string url = "https://api.mailersend.com/v1/email";
 
         /* Token de autorizacion para la solicitud: */
-        string tokenEmail = "mlsn.c97c37c7fd059512ff428f09b5b775b11494ca74839c98651bd0b0b85ba0d308";
+        string tokenEmail = "mlsn.dac567a731075e03630dd7040b67e9ddaead36cf0ca945e15cf9f1ccbbc7ec00";
 
         /* Se crea una instancia de la clase Email para contener el mensaje */
         var emailMessage = new Email{
-            from = new From {email = "MS_y99CNE@trial-yzkq340o1zk4d796.mlsender.net"},
+            from = new From {email = "MS_bOkQGp@trial-z86org8od2z4ew13.mlsender.net"},
             to = [
                 new To {email = userEmail}
             ],
