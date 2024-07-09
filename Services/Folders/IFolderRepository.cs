@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Backend.Dtos;
 using Backend.Models;
 
 namespace Backend.Services.Folders
@@ -14,6 +15,6 @@ namespace Backend.Services.Folders
         Task Update(Folder Folder, int id);
         Task Delete(int id);
         Task<bool> CheckExistence(int id);
-        Task ChangeStatus(Folder folder1, int id);
+        Task ChangeStatus(StatusFolderDTO StatusFolderDTO, int id);
     }
 }

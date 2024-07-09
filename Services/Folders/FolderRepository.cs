@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.Data;
+using Backend.Dtos;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,15 +42,16 @@ namespace Backend.Services.Folders
         await _context.SaveChangesAsync();
 
         }
-        public async Task ChangeStatus( Folder folder1, int id){
+        public async Task ChangeStatus( StatusFolderDTO StatusFolderDTO, int id){
         var folder = _context.Folders.Find(id);
-        if (folder == null){
-            if  (folder.Status == "Activo"){
-                folder.Status = "Inactivo";
+            folder.Status = StatusFolderDTO.Status;
+        if (folder != null){
+            if  (folder.Status == "Active"){
+                folder.Status = "Active";
                 await _context.SaveChangesAsync();
             }
-            else{
-                folder.Status = "Activo";
+            else if  (folder.Status == "Inactive"){
+                folder.Status = "Inactive";
                 await _context.SaveChangesAsync();
             }
           } 
@@ -57,7 +59,7 @@ namespace Backend.Services.Folders
         public async Task Delete(int id)
         {
             var Folder = await _context.Folders.FindAsync(id);
-            
+
             if (Folder != null)
             {
                 _context.Folders.Remove(Folder);

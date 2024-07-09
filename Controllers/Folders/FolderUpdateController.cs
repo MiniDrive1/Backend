@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Backend.Dtos;
 using Backend.Models;
 using Backend.Services.Folders;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,7 @@ namespace Backend.Controllers.Folders
             }
         }
          [HttpPut("{id}/Update-status")]    
-        public async Task<IActionResult> Status(int id, [FromBody] Folder folder1)
+        public async Task<IActionResult> Status(int id, [FromBody] StatusFolderDTO folder1)
         {
             try
             {
