@@ -15,8 +15,10 @@ namespace Backend.Models{
 
         /* --------------- */
         public int? ParentFolderId { get; set; }
-        public Folder? ParentFolder { get; set; } // Esto es importante para la navegación de EF Core
-        public ICollection<Folder>? SubFolders { get; set; } // Relación inversa
+        [JsonIgnore]
+        public Folder? ParentFolder { get; set; }
+        [JsonIgnore]
+        public List<Folder>? SubFolders { get; set; }
 
 
         /* ---------------- */
@@ -26,15 +28,13 @@ namespace Backend.Models{
         public string Name {get; set;}
 
         /* --------------- */
-        [Required(ErrorMessage = "The date of creation is required.")]
-        [DataType(DataType.Date)]
-        public DateOnly CreationDate {get; set;}
+        public DateOnly? CreationDate {get; set;}
 
         /* ------------- */
         [Required(ErrorMessage = "status is required.")]
         public string Status {get; set;}
 
-                /* ---------------- */
+        /* ---------------- */
         [JsonIgnore]
         public List<Document>? Document { get; set; }
 

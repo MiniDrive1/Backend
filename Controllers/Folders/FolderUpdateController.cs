@@ -20,8 +20,9 @@ namespace Backend.Controllers.Folders
         {
             _folderRepository = folderRepository;
         }
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateFolder(int id, [FromBody] Folder Folder)
+        public async Task<IActionResult> UpdateFolder(int id, [FromBody]  CreateFolderDto folderDto)
         {
             var folderFound = await _folderRepository.CheckExistence(id);
             if (folderFound == false)
@@ -30,12 +31,19 @@ namespace Backend.Controllers.Folders
             }
             else
             {
-                Folder.Id = id;
-                await _folderRepository.Update(Folder, id);
-                return Ok(new { message = "folder updated successfully" });
+                try
+                {
+                    await _folderRepository.Update(id, folderDto);
+                    return Ok(new { message = "folder updated successfully" });
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { message = ex.Message });
+                }
             }
         }
-         [HttpPut("{id}/Update-status")]    
+
+        [HttpPut("{id}/Update-status")]    
         public async Task<IActionResult> Status(int id, [FromBody] StatusFolderDTO folder1)
         {
             try
@@ -53,5 +61,11 @@ namespace Backend.Controllers.Folders
                 return StatusCode(500, new { message = ex.Message });
             }
         } 
+
+        /* Función para listar todos las carpetas de un usuario en especifico */
+        [HttpGet("{idUser}/user")]
+        public async Task<IEnumerable<Folder>> foldersOfUser(int idUser){
+            return await _folderRepository.GetFoldersOfOneUser(idUser);
+        }
     }
 }

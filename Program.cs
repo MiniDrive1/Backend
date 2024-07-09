@@ -6,6 +6,7 @@ using Backend.Services.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Backend.Services.Folders;
+using Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -49,6 +50,7 @@ options.UseMySql(
 // Add services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IFolderRepository, FolderRepository>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 
 
 /* ------------ CORS ---------- */

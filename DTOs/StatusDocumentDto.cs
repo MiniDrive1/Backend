@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Backend.Dtos
 {
-    public class StatusFolderDTO
+    public class StatusDocumentDto
     {
-       public int Id {get; set;}
 
         [Required(ErrorMessage = "status is required.")]
-        public string Status {get; set;}
+       public string Status {get; set;}
   
     }
 }

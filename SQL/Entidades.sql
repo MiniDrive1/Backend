@@ -19,6 +19,7 @@ CREATE TABLE Documents(
     Id INT PRIMARY KEY AUTO_INCREMENT,
     UserId INT,
     Name VARCHAR(255),
+    Type VARCHAR(20),
     CreationDate Date,
     FolderId INT,
     Status ENUM("Active","Inactive")
@@ -28,7 +29,3 @@ ALTER TABLE `Folders` ADD FOREIGN KEY (ParentFolderId) REFERENCES Folders(Id);
 ALTER TABLE `Folders` ADD FOREIGN KEY (UserId) REFERENCES Users(Id);
 ALTER TABLE `Documents` ADD FOREIGN KEY (UserId) REFERENCES Users(Id);
 ALTER TABLE `Documents` ADD FOREIGN KEY (FolderId) REFERENCES Folders(Id);
-
-
-
-

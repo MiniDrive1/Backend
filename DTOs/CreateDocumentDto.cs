@@ -1,17 +1,18 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+using System.Linq;
 using System.Threading.Tasks;
-using Backend.Models;
 
-namespace Backend.Models{
-    public class Document{
-
+namespace Backend.Dtos
+{
+    public class CreateDocumentDto
+    {
         /* ------------ */
         public int Id {get; set;}
 
         /* ------------ */
         public int UserId {get; set;}
-        public User? User {get; set;}
 
         /* -------------- */
         [Required(ErrorMessage = "The Name of the document is required.")]
@@ -25,16 +26,9 @@ namespace Backend.Models{
         [MaxLength(20, ErrorMessage = "Name must be at most {1} characters.")]
         public string Type {get; set;}
 
-        /* ---------------- */
-        public DateOnly? CreationDate {get; set;}
-
         /* -------------- */
         public int? FolderId {get;set;}
-        public Folder? Folder {get; set;}
-        
-        /* ------------------ */
-        [Required(ErrorMessage = "status is required.")]
-        public string Status {get; set;}
 
+  
     }
 }
