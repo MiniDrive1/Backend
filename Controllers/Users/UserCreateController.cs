@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers.Users
 {
     [ApiController]
-    [Route("api/userscreate")]
+    [Route("api/users")]
     public class UserCreateController : ControllerBase
     {
         private readonly IUserRepository _userRepository;

@@ -26,6 +26,7 @@ namespace Backend.Controllers.Users
             {
                 return NotFound();
             }
+             await _userRepository.Delete(id);
             return Ok();
         } 
     }
